@@ -28,7 +28,7 @@ namespace Projet_Here.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PLaces",
+                name: "Places",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -40,7 +40,36 @@ namespace Projet_Here.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PLaces", x => x.Id);
+                    table.PrimaryKey("PK_Places", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Missions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    EventId = table.Column<int>(type: "INTEGER", nullable: false),
+                    PlaceId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Title = table.Column<string>(type: "TEXT", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Missions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Missions_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Missions_Places_PlaceId",
+                        column: x => x.PlaceId,
+                        principalTable: "Places",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -49,6 +78,7 @@ namespace Projet_Here.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    PlaceId = table.Column<int>(type: "INTEGER", nullable: false),
                     Pseudo = table.Column<string>(type: "TEXT", nullable: false),
                     Password = table.Column<string>(type: "TEXT", nullable: false),
                     FirstName = table.Column<string>(type: "TEXT", nullable: false),
@@ -62,39 +92,12 @@ namespace Projet_Here.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Missions",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    EventId = table.Column<int>(type: "INTEGER", nullable: true),
-                    PlaceId = table.Column<int>(type: "INTEGER", nullable: true),
-                    PlaceId1 = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Missions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Missions_Events_EventId",
-                        column: x => x.EventId,
-                        principalTable: "Events",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Missions_PLaces_PlaceId",
+                        name: "FK_Users_Places_PlaceId",
                         column: x => x.PlaceId,
-                        principalTable: "PLaces",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Missions_PLaces_PlaceId1",
-                        column: x => x.PlaceId1,
-                        principalTable: "PLaces",
-                        principalColumn: "Id");
+                        principalTable: "Places",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -132,14 +135,14 @@ namespace Projet_Here.Migrations
                 column: "PlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Missions_PlaceId1",
-                table: "Missions",
-                column: "PlaceId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_MissionUser_UsersId",
                 table: "MissionUser",
                 column: "UsersId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_PlaceId",
+                table: "Users",
+                column: "PlaceId");
         }
 
         /// <inheritdoc />
@@ -158,7 +161,7 @@ namespace Projet_Here.Migrations
                 name: "Events");
 
             migrationBuilder.DropTable(
-                name: "PLaces");
+                name: "Places");
         }
     }
 }

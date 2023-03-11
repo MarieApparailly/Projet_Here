@@ -11,7 +11,7 @@ using Projet_Here.Data;
 namespace Projet_Here.Migrations
 {
     [DbContext(typeof(HereContext))]
-    [Migration("20230311133315_InitialCreate")]
+    [Migration("20230311162526_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -68,13 +68,10 @@ namespace Projet_Here.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("EventId")
+                    b.Property<int>("EventId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("PlaceId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("PlaceId1")
+                    b.Property<int>("PlaceId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("StartDate")
@@ -89,8 +86,6 @@ namespace Projet_Here.Migrations
                     b.HasIndex("EventId");
 
                     b.HasIndex("PlaceId");
-
-                    b.HasIndex("PlaceId1");
 
                     b.ToTable("Missions");
                 });
@@ -117,7 +112,7 @@ namespace Projet_Here.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PLaces");
+                    b.ToTable("Places");
                 });
 
             modelBuilder.Entity("Projet_Here.Models.User", b =>
@@ -148,6 +143,9 @@ namespace Projet_Here.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("PlaceId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Pseudo")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -160,6 +158,8 @@ namespace Projet_Here.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PlaceId");
 
                     b.ToTable("Users");
                 });
@@ -181,17 +181,32 @@ namespace Projet_Here.Migrations
 
             modelBuilder.Entity("Projet_Here.Models.Mission", b =>
                 {
-                    b.HasOne("Projet_Here.Models.Event", null)
+                    b.HasOne("Projet_Here.Models.Event", "Event")
                         .WithMany("Missions")
-                        .HasForeignKey("EventId");
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Projet_Here.Models.Place", null)
-                        .WithMany("EndMissions")
-                        .HasForeignKey("PlaceId");
+                    b.HasOne("Projet_Here.Models.Place", "Place")
+                        .WithMany("Missions")
+                        .HasForeignKey("PlaceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Projet_Here.Models.Place", null)
-                        .WithMany("StartMissions")
-                        .HasForeignKey("PlaceId1");
+                    b.Navigation("Event");
+
+                    b.Navigation("Place");
+                });
+
+            modelBuilder.Entity("Projet_Here.Models.User", b =>
+                {
+                    b.HasOne("Projet_Here.Models.Place", "Place")
+                        .WithMany()
+                        .HasForeignKey("PlaceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Place");
                 });
 
             modelBuilder.Entity("Projet_Here.Models.Event", b =>
@@ -201,9 +216,7 @@ namespace Projet_Here.Migrations
 
             modelBuilder.Entity("Projet_Here.Models.Place", b =>
                 {
-                    b.Navigation("EndMissions");
-
-                    b.Navigation("StartMissions");
+                    b.Navigation("Missions");
                 });
 #pragma warning restore 612, 618
         }

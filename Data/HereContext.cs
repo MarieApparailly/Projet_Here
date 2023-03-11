@@ -10,7 +10,7 @@ public class HereContext : DbContext
     public DbSet<Event> Events { get; set; } = null!;
     public DbSet<Mission> Missions { get; set; } = null!;
     public DbSet<User> Users { get; set; } = null!;
-    public DbSet<Place> PLaces { get; set; } = null!;
+    public DbSet<Place> Places { get; set; } = null!;
 
 
     public string DbPath { get; private set; }
@@ -19,7 +19,7 @@ public class HereContext : DbContext
     public HereContext()
     {
         // Path to SQLite database file
-        DbPath = "MvcUniveristy.db";
+        DbPath = "Here.db";
     }
 
 

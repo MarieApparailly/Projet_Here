@@ -10,6 +10,10 @@ public enum Status
 public class User 
 {
     public int Id { get; set; }
+
+    public int PlaceId { get; set; }
+    public Place Place { get; set; } = null!;
+
     public string Pseudo { get; set; } = null!;
     public string Password { get; set; } = null!;
     public string FirstName { get; set; } = null!;
