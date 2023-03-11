@@ -1,4 +1,4 @@
-namespace PII_HERE.Models;
+namespace Projet_Here.Models;
 
 public class Event 
 {
@@ -6,6 +6,6 @@ public class Event
     public string Title { get; set; } = null!;
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
-    public ?string Description { get; set; }
-    public ?List<Mission> Missions { get; set; } = new List<Mission>();
+    public string? Description { get; set; }
+    public List<Mission>? Missions { get; set; } = new List<Mission>();
 }

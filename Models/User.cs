@@ -1,10 +1,10 @@
-namespace PII_HERE.Models;
+namespace Projet_Here.Models;
 
 public enum Status
 {
-    "En mission",
-    "Disponible",
-    "En repos"
+    EN_MISSION,
+    DISPONIBLE,
+    EN_REPOS
 }
 
 public class User 
@@ -15,14 +15,14 @@ public class User
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
     public string Phone { get; set; } = null!;
-    public ?string Mail { get; set; }
-    public Status Status { get; set; } = null!;
-    public bool Car { get; set; } = null!;
+    public string? Mail { get; set; }
+    public Status Status { get; set; } 
+    public bool Car { get; set; }
     public string Team { get; set; } = null!;
-    public ?List<Mission> Missions { get; set; } = new List<Mission>();
+    public List<Mission> Missions { get; set; } = new List<Mission>();
 
     public User() { 
-        Status = "Disponible";
+        Status = Status.DISPONIBLE;
     }
 
     public User(string team) {

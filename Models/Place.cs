@@ -1,13 +1,13 @@
-namespace PII_HERE.Models;
+namespace Projet_Here.Models;
 
 public class Place 
 {
     public int Id { get; set; }
     public string Name { get; set; } = null!;
     public string City { get; set; } = null!;
-    public string Latitude { get; set; }
-    public string Longitude { get; set; }
-    public ?List<Mission> StartMissions { get; set; } = new List<Mission>();
-    public ?List<Mission> EndMissions { get; set; } = new List<Mission>();
+    public string? Latitude { get; set; }
+    public string? Longitude { get; set; }
+    public List<Mission> StartMissions { get; set; } = new List<Mission>();
+    public List<Mission> EndMissions { get; set; } = new List<Mission>();
 
 }
