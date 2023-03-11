@@ -1,9 +1,16 @@
+using System.Text.Json.Serialization;
+using Projet_Here.Data;
+using Projet_Here.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+// Seed data into DB
+SeedData.Init();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

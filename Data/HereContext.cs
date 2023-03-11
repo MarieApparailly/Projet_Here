@@ -11,6 +11,7 @@ public class HereContext : DbContext
     public DbSet<Mission> Missions { get; set; } = null!;
     public DbSet<User> Users { get; set; } = null!;
     public DbSet<Place> Places { get; set; } = null!;
+    public DbSet<Enrollment> Enrollments { get; set; } = null!;
 
 
     public string DbPath { get; private set; }

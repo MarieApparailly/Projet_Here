@@ -8,26 +8,30 @@ public class SeedData
     {
         using (var context = new HereContext())
         {
-            // Look for existing content
-            if (context.Missions.Any())
-            {
-                return;   // DB already filled
-            }
-
-            // // Add events
-            // Student carson = new Student
+            // // Look for existing content
+            // if (context.Events.Any())
             // {
-            //     FirstName = "Alexander",
-            //     LastName = "Carson",
-            //     EnrollmentDate = DateTime.Parse("2016-09-01"),
-            // };
+            //     return;   // DB already filled
+            // }
 
-            // context.Students.AddRange(
-            //     carson,
-            //     alonso,
-            //     anand,
-            //     barzdukas
-            // );
+            // Add events
+            Event wei = new Event
+            {
+                Title = "WEI", 
+                StartDate = DateTime.Parse("2023-09-29 17:00:00"),
+                EndDate = DateTime.Parse("2023-10-01 15:00:00")
+            };
+            Event manifVss = new Event
+            {
+                Title = "Manif VSS", 
+                Description = "Manifestion contre les Violences Sexistes et Sexuelles, organisée par l'association NousToutes",
+                StartDate = DateTime.Parse("2023-11-19 10:00:00"),
+                EndDate = DateTime.Parse("2023-11-19 23:59:00"),
+            };
+            context.Events.AddRange(
+                wei,
+                manifVss
+            );
 
             // // Add users
             // var abercrombie = new Instructor

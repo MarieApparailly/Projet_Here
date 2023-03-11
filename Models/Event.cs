@@ -8,4 +8,11 @@ public class Event
     public DateTime EndDate { get; set; }
     public string? Description { get; set; }
     public List<Mission>? Missions { get; set; } = new List<Mission>();
+
+    public Event (){
+        if (EndDate == null)
+        {
+            EndDate = StartDate;
+        }
+    }
 }
