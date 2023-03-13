@@ -28,7 +28,7 @@ public class SeedData
                 StartDate = DateTime.Parse("2023-11-19 10:00:00"),
                 EndDate = DateTime.Parse("2023-11-19 23:59:00"),
             };
-            context.Events.AddRange(
+            context.Events.AddRange(3
                 wei,
                 manifVss
             );
