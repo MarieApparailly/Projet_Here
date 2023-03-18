@@ -6,7 +6,7 @@ public class EnrollmentDTO
     public int Id { get; set; }
     public int UserId { get; set; }
     public int MissionId { get; set; }
-    // status for the user
+    // infos MissionUser
     public bool Accepted { get; set; } 
     public bool Started { get; set; } 
     public bool Ended { get; set; } 

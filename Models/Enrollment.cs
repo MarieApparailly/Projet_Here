@@ -3,10 +3,13 @@ namespace Projet_Here.Models;
 public class Enrollment
 {
     public int Id { get; set; }
+    // link User
     public int UserId { get; set; }
-    public int MissionId { get; set; }
     public User User { get; set; } = null!;
+    // link Mission
+    public int MissionId { get; set; }
     public Mission Mission { get; set; } = null!;
+    // infos MissionUser
     public bool Accepted { get; set; } 
     public bool Started { get; set; } 
     public bool Ended { get; set; } 
