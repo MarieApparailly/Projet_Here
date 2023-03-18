@@ -1,7 +1,7 @@
 namespace Projet_Here.Models;
 
 
-// enum définissant le statut du membre
+// enum for member' status
 public enum Status
 {
     EN_MISSION,
@@ -34,7 +34,7 @@ public class User
     public bool Admin { get; set; }
     public List<Mission> Missions { get; set; } = new List<Mission>();
 
-    // Constructeurs
+    // Constructors
     public User() { 
         Status = Status.DISPONIBLE;
         Admin = true;
