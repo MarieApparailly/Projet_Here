@@ -40,8 +40,8 @@ public class User
         Admin = true;
     }
 
-    public User(string group) {
-        Group = group;
+    public User(string team) {
+        Team = team;
         Status = Status.DISPONIBLE;
         Admin = true;
     }

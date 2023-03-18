@@ -10,7 +10,7 @@ public class Event
     public List<Mission>? Missions { get; set; } = new List<Mission>();
 
     public Event (){
-        if (EndDate == null)
+        if (EndDate.Year < 2023)
         {
             EndDate = StartDate;
         }
