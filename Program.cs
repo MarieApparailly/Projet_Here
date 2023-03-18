@@ -11,6 +11,7 @@ var app = builder.Build();
 
 // Seed data into DB
 SeedData.Init();
+Console.Write("Normally SeedData init is used");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
