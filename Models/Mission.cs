@@ -8,7 +8,7 @@ public class Mission
     public Event Event { get; set; } = null!;
 
     public int PlaceId { get; set; }
-    public Place Place { get; set; } = null!;
+    public Place? Place { get; set; } 
 
     //public int PlaceId { get; set; }
     //public Place StartPlace { get; set; } = null!;
