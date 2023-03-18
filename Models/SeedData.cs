@@ -28,81 +28,126 @@ public class SeedData
                 StartDate = DateTime.Parse("2023-11-19 10:00:00"),
                 EndDate = DateTime.Parse("2023-11-19 23:59:00"),
             };
-            context.Events.AddRange(3
+            context.Events.AddRange(
                 wei,
                 manifVss
             );
 
-            // // Add users
-            // var abercrombie = new Instructor
-            // {
-            //     FirstName = "Kim",
-            //     LastName = "Abercrombie",
-            //     HireDate = DateTime.Parse("1995-03-11")
-            // };
+            // Add users
+            User cha = new User
+            {
+                Pseudo = "Cha";
+                Password = "test";
+                FirstName = "Charlotte";
+                LastName = "Miaou";
+                Phone = "0624449999";
+                Car = false;
+                Group = "NousToutes";
+            };
+            User luc = new User
+            {
+                Pseudo = "Lucky";
+                Password = "test";
+                FirstName = "Luc";
+                LastName = "Tanos";
+                Phone = "0627834400";
+                Car = true;
+                Group = "NousToutes";
+            };
+            User idunn = new User
+            {
+                Pseudo = "Idunn";
+                Password = "test";
+                FirstName = "Idunn";
+                LastName = "Apparailly";
+                Phone = "0666325487";
+                Car = false;
+                Group = "NousToutes";
+            };
+            User marie = new User
+            {
+                Pseudo = "Marie";
+                Password = "test";
+                FirstName = "Marie";
+                LastName = "Apparailly";
+                Phone = "0626000001";
+                Car = false;
+                Group = "NousToutes";
+            };
+            User marie2 = marie
+            {
+                Pseudo = "Marie";
+                Password = "test";
+                Group = "BDE";
+            };
+            User cycy = new User
+            {
+                Pseudo = "Cycy";
+                Password = "test";
+                FirstName = "Cyrielle";
+                LastName = "Barbier";
+                Phone = "0780322222";
+                Car = true;
+                Group = "BDE";
+            };
+            User jo = new User
+            {
+                Pseudo = "Jo";
+                Password = "test";
+                FirstName = "Joseph";
+                LastName = "Beasse";
+                Phone = "060673333";
+                Car = false;
+                Group = "BDE";
+            };
+            User clem = new User
+            {
+                Pseudo = "Clem";
+                Password = "test";
+                FirstName = "Clémence";
+                LastName = "Monnier";
+                Phone = "0788889543";
+                Car = false;
+                Group = "BDE";
+            };
+            User tiph = new User
+            {
+                Pseudo = "Tiph";
+                Password = "test";
+                FirstName = "Tiphaine";
+                LastName = "Petit";
+                Phone = "0632214455";
+                Car = false;
+                Group = "BDE";
+            };
+            User alex = new User
+            {
+                Pseudo = "Alex";
+                Password = "test";
+                FirstName = "Alexandra";
+                LastName = "Moras";
+                Phone = "0666669821";
+                Car = true;
+                Group = "BDE";
+            };
+            context.Users.AddRange(
+                cha, 
+                luc,
+                idunn,
+                marie,
+                marie2,
+                cycy,
+                jo,
+                clem,
+                tiph,
+                alex                
+            );
 
-            // // Add missions
-            // var mathematics = new Department
+            // Add missions
+            // Mission secu = new Mission 
             // {
-            //     Name = "Mathematics",
-            //     Administrator = fakhouri
-            // };
 
-            // // Add places
-            // Course chemistry = new Course
-            // {
-            //     Id = 1050,
-            //     Title = "Chemistry",
-            //     Credits = 3,
-            //     Department = engineering,
-            //     Instructors = new List<Instructor> { abercrombie, harui }
-            // };
-            
-            // context.Courses.AddRange(
-            //     chemistry,
-            //     microeconomics,
-            //     macroeconmics,
-            //     calculus
-            // );
-
-            // // Add enrollments
-            // context.Enrollments.AddRange(
-            //     new Enrollment
-            //     {
-            //         Student = carson,
-            //         Course = chemistry,
-            //         Grade = Grade.A
-            //     },
-            //     new Enrollment
-            //     {
-            //         Student = carson,
-            //         Course = microeconomics,
-            //         Grade = Grade.C
-            //     },
-            //     new Enrollment
-            //     {
-            //         Student = alonso,
-            //         Course = calculus,
-            //         Grade = Grade.B
-            //     },
-            //     new Enrollment
-            //     {
-            //         Student = anand,
-            //         Course = chemistry,
-            //     },
-            //     new Enrollment
-            //     {
-            //         Student = anand,
-            //         Course = microeconomics,
-            //         Grade = Grade.B
-            //     },
-            //     new Enrollment
-            //     {
-            //         Student = barzdukas,
-            //         Course = chemistry,
-            //         Grade = Grade.C
-            //     }
-            // );
+            // }
 
             // Commit changes into DB
             context.SaveChanges();
