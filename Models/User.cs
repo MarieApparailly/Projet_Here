@@ -30,8 +30,7 @@ public class User
     public bool Car { get; set; }
 
     public Status Status { get; set; } 
-    public string Group { get; set; } = null!;
-    public List<Team>? Team { get; set; } // à utiliser à la place de Group selon avancement
+    public string Team { get; set; } = null!;
     public bool Admin { get; set; }
     public List<Mission> Missions { get; set; } = new List<Mission>();
 
@@ -47,14 +46,14 @@ public class User
         Admin = true;
     }
 
-    public User(string pseudo, string password, string firstName, string lastName, string phone, bool car, string group) {
+    public User(string pseudo, string password, string firstName, string lastName, string phone, bool car, string team) {
         Pseudo = pseudo;
         Password = password;
         FirstName = firstName;
         LastName = lastName;
         Phone = phone;
         Car = car;
-        Group = group;
+        Team = team;
         Status = Status.DISPONIBLE;
         Admin = true;
     }
