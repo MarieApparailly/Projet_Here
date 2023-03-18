@@ -14,8 +14,8 @@ public class User
 {
     public int Id { get; set; }
 
-    public string Latitude { get; set; } 
-    public string Longitude { get; set; } 
+    public string? Latitude { get; set; } 
+    public string? Longitude { get; set; } 
 
     public int? PlaceId { get; set; } // à associer ou pour remplacer Latitude et Longitude (en fonction de l'API de localisation)
     public Place? Place { get; set; } 
