@@ -11,8 +11,8 @@ using Projet_Here.Data;
 namespace Projet_Here.Migrations
 {
     [DbContext(typeof(HereContext))]
-    [Migration("20230318174542_InitiaCreate")]
-    partial class InitiaCreate
+    [Migration("20230319100701_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,7 +104,7 @@ namespace Projet_Here.Migrations
                     b.Property<int>("EventId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("PlaceId")
+                    b.Property<int?>("PlaceId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("StartDate")
@@ -259,9 +259,7 @@ namespace Projet_Here.Migrations
 
                     b.HasOne("Projet_Here.Models.Place", "Place")
                         .WithMany("Missions")
-                        .HasForeignKey("PlaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PlaceId");
 
                     b.Navigation("Event");
 

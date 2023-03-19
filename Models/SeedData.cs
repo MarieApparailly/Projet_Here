@@ -8,11 +8,11 @@ public class SeedData
     {
         using (var context = new HereContext())
         {
-            // // Look for existing content
-            // if (context.Events.Any())
-            // {
-            //     return;   // DB already filled
-            // }
+            // Look for existing content
+            if (context.Events.Any())
+            {
+                return;   // DB already filled
+            }
 
             // Add events
             Event wei = new Event
@@ -135,7 +135,7 @@ public class SeedData
                 Team = "BDE"
             };
             context.Users.AddRange(
-                cha, 
+                cha,
                 luc,
                 idunn,
                 marie,
@@ -347,6 +347,7 @@ public class SeedData
             };
             context.Missions.AddRange(
                 pancartes,
+                circuit,
                 marche,
                 discoursAsso,
                 discoursLoi,

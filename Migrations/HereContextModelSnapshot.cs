@@ -101,7 +101,7 @@ namespace Projet_Here.Migrations
                     b.Property<int>("EventId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("PlaceId")
+                    b.Property<int?>("PlaceId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("StartDate")
@@ -256,9 +256,7 @@ namespace Projet_Here.Migrations
 
                     b.HasOne("Projet_Here.Models.Place", "Place")
                         .WithMany("Missions")
-                        .HasForeignKey("PlaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PlaceId");
 
                     b.Navigation("Event");
 
