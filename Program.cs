@@ -5,7 +5,14 @@ using Projet_Here.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+// Ignore circular references when serializing objects into JSON
+// https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/preserve-references?pivots=dotnet-6-0
+builder.Services.AddControllersWithViews().AddJsonOptions(x =>
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+// Attach an EF Core database context to each query
+builder.Services.AddDbContext<HereContext>();
+
 
 var app = builder.Build();
 
