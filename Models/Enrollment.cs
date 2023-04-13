@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
+using Projet_Here.Controllers;
+
 namespace Projet_Here.Models;
 
 public class Enrollment
@@ -23,16 +26,29 @@ public class Enrollment
         NeedHelp = false;
     }
 
-    // Copy constructor
-    public Enrollment(EnrollmentDTO dto)
-    {
-        // Copy DTO field values
-        Id = dto.Id;
-        UserId = dto.UserId;
-        MissionId = dto.MissionId;
-        Accepted = false;
-        Started = false;
-        Ended = false;
-        NeedHelp = false;
-    }
+    // // Copy constructor
+    // public Enrollment(EnrollmentDTO dto)
+    // {
+    //     // Copy DTO field values
+    //     Id = dto.Id;
+    //     UserId = dto.UserId;
+    //     MissionId = dto.MissionId;
+    //     Accepted = false;
+    //     Started = false;
+    //     Ended = false;
+    //     NeedHelp = false;
+    // }
+
+    // public void UsersMissions() {
+
+    //     List<User> user = new List<User>();
+    //     Task<ActionResult<IEnumerable<User>>> users =  Task<ActionResult<IEnumerable<User>>> UserApiController.GetUsers();
+        
+    //     // for (users.Id == this.UserId)
+    //     // {
+    //     //     User.Missions.AddRange(this.Mission);
+    //     //     Mission.Users.AddRange(this.User)
+    //     // }
+    //     return users;
+    // }
 }

@@ -17,21 +17,22 @@ public class UserApiController : ControllerBase
     }
 
     // GET: api/UserApi
-    public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-    {
-        return await _context.Users.ToListAsync();
-    }
-
-    // // GET: api/UserApi
     // public async Task<ActionResult<IEnumerable<User>>> GetUsers()
     // {
-    //     // Get users
-    //     var users = _context.Users
-    //         .OrderBy(s => s.LastName)
-    //         .ThenBy(s => s.FirstName);
-
-    //     return await users.ToListAsync();
+    //     return await _context.Users.ToListAsync();
     // }
+
+    // GET: api/UserApi
+    public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+    {
+        // Get users
+        var users = _context.Users
+            .OrderBy(s => s.LastName)
+            .ThenBy(s => s.FirstName)
+            .Include(s => s.Missions);
+
+        return await users.ToListAsync();
+    }
 
     // // GET: api/userApi/5
     // [HttpGet("{id}")]
@@ -42,7 +43,7 @@ public class UserApiController : ControllerBase
     //     // SingleOrDefaultAsync() is a safer choice here
     //     var user = await _context.Users
     //         .Where(s => s.Id == id)
-    //         .Include(s => s.Enrollments)
+    //         .Include(s => s.Missions)
     //         .SingleOrDefaultAsync();
 
     //     if (user == null)

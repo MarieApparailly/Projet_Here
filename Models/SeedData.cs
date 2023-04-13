@@ -368,6 +368,7 @@ public class SeedData
                 soiree      
             );
 
+
             // Add enrollments
             Enrollment marieTireuse = new Enrollment
             {
@@ -485,6 +486,20 @@ public class SeedData
                 idunnSecu,
                 chaDiscoursL 
             );
+
+            // Add relations Users-Missions
+            IEnumerable<Mission> missionsMarie2 = new List<Mission>{
+                pancartes,
+                discoursAsso,
+                appelSecours,    
+                tireuse};
+            marie2.Missions.AddRange(missionsMarie2);
+
+            IEnumerable<Mission> missionsMarie = new List<Mission>{
+                pancartes,
+                discoursAsso};
+            marie2.Missions.AddRange(missionsMarie);
+
 
             // Commit changes into DB
             context.SaveChanges();
