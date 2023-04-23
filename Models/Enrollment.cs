@@ -26,6 +26,17 @@ public class Enrollment
         NeedHelp = false;
     }
 
+    public Enrollment(User user, Mission mission) {
+        UserId = user.Id;
+        MissionId = mission.Id;
+        user.Missions.Add(mission);
+        mission.Users.Add(user);
+        Accepted = false;
+        Started = false;
+        Ended = false;
+        NeedHelp = false;
+    }
+
     // // Copy constructor
     // public Enrollment(EnrollmentDTO dto)
     // {
@@ -39,16 +50,8 @@ public class Enrollment
     //     NeedHelp = false;
     // }
 
-    // public void UsersMissions() {
+    public void UserMission(User user, Mission mission) {
 
-    //     List<User> user = new List<User>();
-    //     Task<ActionResult<IEnumerable<User>>> users =  Task<ActionResult<IEnumerable<User>>> UserApiController.GetUsers();
         
-    //     // for (users.Id == this.UserId)
-    //     // {
-    //     //     User.Missions.AddRange(this.Mission);
-    //     //     Mission.Users.AddRange(this.User)
-    //     // }
-    //     return users;
-    // }
+    }
 }

@@ -487,19 +487,81 @@ public class SeedData
                 chaDiscoursL 
             );
 
-            // Add relations Users-Missions
+            // Add list missions in user
             IEnumerable<Mission> missionsMarie2 = new List<Mission>{
                 pancartes,
                 discoursAsso,
                 appelSecours,    
                 tireuse};
             marie2.Missions.AddRange(missionsMarie2);
-
             IEnumerable<Mission> missionsMarie = new List<Mission>{
                 pancartes,
                 discoursAsso};
-            marie2.Missions.AddRange(missionsMarie);
+            marie.Missions.AddRange(missionsMarie);
+            IEnumerable<Mission> missionsClem = new List<Mission>{
+                cocktails};
+            clem.Missions.AddRange(missionsClem);
+            IEnumerable<Mission> missionsCy = new List<Mission>{
+                cocktails};
+            cycy.Missions.AddRange(missionsCy);
+            IEnumerable<Mission> missionsTiph = new List<Mission>{
+                cocktails};
+            tiph.Missions.AddRange(missionsTiph);
+            IEnumerable<Mission> missionsAlex = new List<Mission>{
+                deco};
+            alex.Missions.AddRange(missionsAlex);
+            IEnumerable<Mission> missionsJo = new List<Mission>{
+                mobilhome};
+            jo.Missions.AddRange(missionsJo);
+            IEnumerable<Mission> missionsLuc = new List<Mission>{
+                secu,
+                circuit};
+            luc.Missions.AddRange(missionsLuc);
+            IEnumerable<Mission> missionsIdunn = new List<Mission>{
+                pancartes,
+                secu};
+            idunn.Missions.AddRange(missionsIdunn);
+            IEnumerable<Mission> missionsCha = new List<Mission>{
+                discoursLoi};
+            cha.Missions.AddRange(missionsCha);
 
+            // Add list users in mission
+            IEnumerable<User> usersTireuse = new List<User>{
+                marie2};
+            tireuse.Users.AddRange(usersTireuse);
+            IEnumerable<User> usersAppel = new List<User>{
+                marie2};
+            appelSecours.Users.AddRange(usersAppel);
+            IEnumerable<User> usersCocktail = new List<User>{
+                clem,
+                cycy,
+                tiph};
+            cocktails.Users.AddRange(usersCocktail);
+            IEnumerable<User> usersDeco = new List<User>{
+                alex};
+            deco.Users.AddRange(usersDeco);
+            IEnumerable<User> usersMobilhome = new List<User>{
+                jo};
+            mobilhome.Users.AddRange(usersMobilhome);
+            IEnumerable<User> usersCircuit = new List<User>{
+                luc};
+            circuit.Users.AddRange(usersCircuit);
+            IEnumerable<User> usersDiscoursA = new List<User>{
+                marie,
+                marie2};
+            discoursAsso.Users.AddRange(usersDiscoursA);
+            IEnumerable<User> usersPancartes = new List<User>{
+                marie,
+                marie2,
+                idunn};
+            pancartes.Users.AddRange(usersPancartes);
+            IEnumerable<User> usersSecu = new List<User>{
+                luc,
+                idunn};
+            secu.Users.AddRange(usersSecu);
+            IEnumerable<User> usersDiscoursL = new List<User>{
+                cha};
+            discoursLoi.Users.AddRange(usersDiscoursL);
 
             // Commit changes into DB
             context.SaveChanges();

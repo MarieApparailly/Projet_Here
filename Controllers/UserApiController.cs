@@ -34,46 +34,46 @@ public class UserApiController : ControllerBase
         return await users.ToListAsync();
     }
 
-    // // GET: api/userApi/5
-    // [HttpGet("{id}")]
-    // public async Task<ActionResult<User>> GetUser(int id)
-    // {
-    //     // Find user and related enrollments
-    //     // SingleAsync() throws an exception if no user is found (which is possible, depending on id)
-    //     // SingleOrDefaultAsync() is a safer choice here
-    //     var user = await _context.Users
-    //         .Where(s => s.Id == id)
-    //         .Include(s => s.Missions)
-    //         .SingleOrDefaultAsync();
+    // GET: api/userApi/5
+    [HttpGet("{id}")]
+    public async Task<ActionResult<User>> GetUser(int id)
+    {
+        // Find user and related enrollments
+        // SingleAsync() throws an exception if no user is found (which is possible, depending on id)
+        // SingleOrDefaultAsync() is a safer choice here
+        var user = await _context.Users
+            .Where(s => s.Id == id)
+            .Include(s => s.Missions)
+            .SingleOrDefaultAsync();
 
-    //     if (user == null)
-    //         return NotFound();
+        if (user == null)
+            return NotFound();
 
-    //     return user;
-    // }
+        return user;
+    }
 
-    // // POST: api/UserApi
-    // // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    // [HttpPost]
-    // public async Task<ActionResult<User>> PostUser(User user)
-    // {
-    //     _context.Users.Add(user);
-    //     await _context.SaveChangesAsync();
+    // POST: api/UserApi
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPost]
+    public async Task<ActionResult<User>> PostUser(User user)
+    {
+        _context.Users.Add(user);
+        await _context.SaveChangesAsync();
 
-    //     return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
-    // }
+        return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
+    }
 
-    // // DELETE: api/UserApi/5
-    // [HttpDelete("{id}")]
-    // public async Task<IActionResult> DeleteUser(int id)
-    // {
-    //     var user = await _context.Users.FindAsync(id);
-    //     if (user == null)
-    //         return NotFound();
+    // DELETE: api/UserApi/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteUser(int id)
+    {
+        var user = await _context.Users.FindAsync(id);
+        if (user == null)
+            return NotFound();
 
-    //     _context.Users.Remove(user);
-    //     await _context.SaveChangesAsync();
+        _context.Users.Remove(user);
+        await _context.SaveChangesAsync();
 
-    //     return NoContent();
-    // }
+        return NoContent();
+    }
 }

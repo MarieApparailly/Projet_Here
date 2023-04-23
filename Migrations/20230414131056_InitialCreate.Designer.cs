@@ -11,7 +11,7 @@ using Projet_Here.Data;
 namespace Projet_Here.Migrations
 {
     [DbContext(typeof(HereContext))]
-    [Migration("20230413161934_InitialCreate")]
+    [Migration("20230414131056_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
